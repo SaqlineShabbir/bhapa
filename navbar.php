@@ -116,6 +116,40 @@ if (isset($_SESSION['user']) && in_array($current_page, $restricted_pages)) {
       width: 100%;
     }
 
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #fff;
+      min-width: 250px;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      z-index: 1000;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 15px;
+      color: var(--dark);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .dropdown-content a:hover {
+      background: #f8f9fa;
+      color: var(--primary);
+    }
+
+    .dropdown.show .dropdown-content {
+      display: block;
+    }
+
     #userCircle {
       width: 42px;
       height: 42px;
@@ -196,10 +230,20 @@ if (isset($_SESSION['user']) && in_array($current_page, $restricted_pages)) {
   <a href="index.php" class="logo"><i class="fas fa-calendar-alt"></i>Bhapa </a>
   <nav>
     <a href="index.php">Home</a>
-    <a href="events.php" class="">Events</a>
-  
-    
+ 
     <a href="about.php">About</a>
+    <a href="vet.php">Vet</a>
+    <a href="mypets.php">My Pets</a>
+
+    <!-- Medication Dropdown -->
+    <div class="dropdown">
+      <a href="javascript:void(0)" onclick="toggleMedication()">Medication <i class="fas fa-caret-down"></i></a>
+      <div id="medicationDropdown" class="dropdown-content">
+        <a href="medicationBlog.php">Medication Blog</a>
+        <a href="medicationTracking.php">Medication Tracking</a>
+      </div>
+    </div>
+
     <a href="contact.php">Contact</a>
 
     <?php if (isset($_SESSION['user'])): ?>
@@ -231,12 +275,22 @@ if (isset($_SESSION['user']) && in_array($current_page, $restricted_pages)) {
     dropdown.classList.toggle('show');
   }
 
-  // Close dropdown if clicking outside
+  function toggleMedication() {
+    const menu = document.querySelector('.dropdown');
+    menu.classList.toggle('show');
+  }
+
+  // Close dropdowns if clicking outside
   document.addEventListener('click', function (e) {
     const circle = document.getElementById('userCircle');
-    const dropdown = document.getElementById('dropdownMenu');
+    const userDropdown = document.getElementById('dropdownMenu');
+    const medDropdown = document.querySelector('.dropdown');
+
     if (circle && !circle.contains(e.target)) {
-      dropdown.classList.remove('show');
+      userDropdown.classList.remove('show');
+    }
+    if (medDropdown && !medDropdown.contains(e.target)) {
+      medDropdown.classList.remove('show');
     }
   });
 </script>
