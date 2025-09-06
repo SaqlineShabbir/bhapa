@@ -196,11 +196,11 @@ if (isset($_SESSION['user']) && in_array($current_page, $restricted_pages)) {
   <a href="index.php" class="logo"><i class="fas fa-calendar-alt"></i>Bhapa </a>
   <nav>
     <a href="index.php">Home</a>
-    <a href="events.php" class="">Events</a>
+    <a href="vet.php" class="">Vet</a>
   
     
-    <a href="about.php">About</a>
-    <a href="contact.php">Contact</a>
+    <a href="adaptation.php">Adaptation</a>
+    <a href="marketplace.php">Marketplace</a>
 
     <?php if (isset($_SESSION['user'])): ?>
       <a href="dashboard.php">Dashboard</a>

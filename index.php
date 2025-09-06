@@ -1,18 +1,3 @@
-
-<?php 
-session_start();
-include 'db.php'; 
-// Fetch events from database
-$sql = "SELECT * FROM events ORDER BY event_date ASC LIMIT 3";
-$result = $conn->query($sql);
-$events = [];
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $events[] = $row;
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -775,11 +760,11 @@ if ($result->num_rows > 0) {
 <section class="hero">
   <div class="container">
     <div class="hero-content">
-      <h1>Discover Amazing Events Near You</h1>
-      <p>Find, book, and enjoy concerts, workshops, festivals, and more. Secure your spot with just a few clicks!</p>
+      <h1>Explore a New World of Pets</h1>
+      <p>Take care of your pets, Get help from Vets, Report Lost/Found pets, Explore Marketplace and more. SignUp Now for a new world!</p>
       <div class="hero-btns">
-        <a href="events.php" class="btn btn-accent btn-lg">Browse Events</a>
-        <a href="#" class="btn btn-outline btn-lg">Create Event</a>
+        <a href="vet.php" class="btn btn-accent btn-lg">Vet List</a>
+        <a href="marketplace.php" class="btn btn-outline btn-lg">Marketplace</a>
       </div>
     </div>
   </div>
@@ -823,57 +808,75 @@ if ($result->num_rows > 0) {
 <section class="section-light">
   <div class="container">
     <div class="section-title text-center">
-      <h2>Browse Categories</h2>
-      <p>Discover events by your interests</p>
+      <h2>Up For Adaptation</h2>
+      <p>Adapt a new life in your house</p>
     </div>
     
     <div class="categories-grid">
       <div class="category-card">
-        <div class="category-icon">
-          <i class="fas fa-music"></i>
+        <img src="https://placekitten.com/401/251" alt="Pet 3">
+        <div class="card-content">
+          <h3>Mittens</h3>
+          <p><strong>ID:</strong> ADP003</p>
+          <p><strong>Date:</strong> 1 Sept 2025</p>
+          <p>Sweet kitten, 6 months, loves cuddles.</p>
+          <a class="btn" href="#">Adopt Now</a>
         </div>
-        <h3>Music & Concerts</h3>
-        <p>Concerts, festivals, DJ parties</p>
       </div>
       
       <div class="category-card">
-        <div class="category-icon">
-          <i class="fas fa-graduation-cap"></i>
+        <img src="https://placekitten.com/401/251" alt="Pet 3">
+        <div class="card-content">
+          <h3>Mittens</h3>
+          <p><strong>ID:</strong> ADP003</p>
+          <p><strong>Date:</strong> 1 Sept 2025</p>
+          <p>Sweet kitten, 6 months, loves cuddles.</p>
+          <a class="btn" href="#">Adopt Now</a>
         </div>
-        <h3>Workshops</h3>
-        <p>Learning, training, seminars</p>
       </div>
       
       <div class="category-card">
-        <div class="category-icon">
-          <i class="fas fa-utensils"></i>
+        <img src="https://placekitten.com/401/251" alt="Pet 3">
+        <div class="card-content">
+          <h3>Mittens</h3>
+          <p><strong>ID:</strong> ADP003</p>
+          <p><strong>Date:</strong> 1 Sept 2025</p>
+          <p>Sweet kitten, 6 months, loves cuddles.</p>
+          <a class="btn" href="#">Adopt Now</a>
         </div>
-        <h3>Food & Drink</h3>
-        <p>Tastings, festivals, dinners</p>
       </div>
       
       <div class="category-card">
-        <div class="category-icon">
-          <i class="fas fa-running"></i>
+        <img src="https://placekitten.com/401/251" alt="Pet 3">
+        <div class="card-content">
+          <h3>Mittens</h3>
+          <p><strong>ID:</strong> ADP003</p>
+          <p><strong>Date:</strong> 1 Sept 2025</p>
+          <p>Sweet kitten, 6 months, loves cuddles.</p>
+          <a class="btn" href="#">Adopt Now</a>
         </div>
-        <h3>Sports</h3>
-        <p>Games, matches, tournaments</p>
       </div>
       
       <div class="category-card">
-        <div class="category-icon">
-          <i class="fas fa-theater-masks"></i>
+        <img src="https://placekitten.com/401/251" alt="Pet 3">
+        <div class="card-content">
+          <h3>Mittens</h3>
+          <p><strong>ID:</strong> ADP003</p>
+          <p><strong>Date:</strong> 1 Sept 2025</p>
+          <p>Sweet kitten, 6 months, loves cuddles.</p>
+          <a class="btn" href="#">Adopt Now</a>
         </div>
-        <h3>Arts & Theater</h3>
-        <p>Shows, exhibitions, plays</p>
       </div>
       
       <div class="category-card">
-        <div class="category-icon">
-          <i class="fas fa-heart"></i>
+        <img src="https://placekitten.com/401/251" alt="Pet 3">
+        <div class="card-content">
+          <h3>Mittens</h3>
+          <p><strong>ID:</strong> ADP003</p>
+          <p><strong>Date:</strong> 1 Sept 2025</p>
+          <p>Sweet kitten, 6 months, loves cuddles.</p>
+          <a class="btn" href="#">Adopt Now</a>
         </div>
-        <h3>Health & Wellness</h3>
-        <p>Yoga, meditation, fitness</p>
       </div>
     </div>
   </div>
@@ -883,50 +886,20 @@ if ($result->num_rows > 0) {
 <section class="section-gray">
   <div class="container">
     <div class="section-title text-center">
-      <h2>Featured Events</h2>
-      <p>Popular events you don't want to miss</p>
+      <h2>Marketplace</h2>
+      <p>Get the best items for your pet</p>
     </div>
     
     <div class="events-grid">
-          <?php foreach ($events as $event): 
-        // Format date and time
-        $event_date = date("F j, Y", strtotime($event['event_date']));
-        $event_time = date("g:i A", strtotime($event['event_time']));
+
         
-        // Format price
-        $price = ($event['price'] > 0) ? '$' . number_format($event['price'], 2) : 'Free';
-    ?>
-    <a href="event.php?id=<?= $event['id'] ?>" style="text-decoration: none; color: inherit;">
-    <div class="event-card">
-        <?php if ($event['badge']): ?>
-            <div class="event-badge"><?= $event['badge'] ?></div>
-        <?php endif; ?>
-        
-        <div class="event-image" style="background-image: url('<?= $event['image_color'] ?>');"></div>
-        
-        <div class="event-content">
-            <div class="event-date">
-                <i class="far fa-calendar-alt"></i> <?= $event_date ?> • <?= $event_time ?>
-            </div>
-            <h3><?= htmlspecialchars($event['title']) ?></h3>
-            <div class="event-location">
-                <i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars($event['location']) ?>
-            </div>
-            <p><?= htmlspecialchars(substr($event['description'], 0, 100)) ?>...</p>
-            <div class="event-footer">
-                <div class="event-price"><?= $price ?></div>
-                <div class="event-stats">
-                    <i class="fas fa-users"></i> <?= number_format($event['attendees']) ?> Going
-                </div>
-            </div>
-        </div>
-    </div>
+    
     </a>
-    <?php endforeach; ?>
+    
     </div>
     
     <div class="text-center" style="margin-top: 50px;">
-      <a href="events.php" class="btn btn-primary">View All Events</a>
+      <a href="marketplace.php" class="btn btn-primary">Explore Now</a>
     </div>
   </div>
 </section>
@@ -937,17 +910,17 @@ if ($result->num_rows > 0) {
     <div class="stats-container">
       <div class="stat-box">
         <div class="stat-number">15,000+</div>
-        <div class="stat-text">Events Listed</div>
+        <div class="stat-text">Active Vet Owners</div>
       </div>
       
       <div class="stat-box">
-        <div class="stat-number">500k+</div>
-        <div class="stat-text">Active Users</div>
+        <div class="stat-number">50</div>
+        <div class="stat-text">Vets</div>
       </div>
       
       <div class="stat-box">
         <div class="stat-number">120+</div>
-        <div class="stat-text">Cities Covered</div>
+        <div class="stat-text">Emergency Medication List</div>
       </div>
       
       <div class="stat-box">
@@ -1000,8 +973,8 @@ if ($result->num_rows > 0) {
 <section>
   <div class="container">
     <div class="cta-container">
-      <h2>Ready to Host Your Event?</h2>
-      <p>Join thousands of organizers who use EventHub to sell tickets and manage events. Our platform makes event management simple and effective.</p>
+      <h2>Join the unique world now</h2>
+      <p>Join thousands of pet owner who use EventHub to sell tickets and manage events. Our platform makes event management simple and effective.</p>
       <a href="#" class="btn btn-accent btn-lg">Create Your Event</a>
     </div>
   </div>
