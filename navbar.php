@@ -232,8 +232,8 @@ if (isset($_SESSION['user']) && in_array($current_page, $restricted_pages)) {
     <a href="index.php">Home</a>
  
     <a href="about.php">About</a>
-    <a href="vet.php">Vet</a>
-    <a href="mypets.php">My Pets</a>
+    
+ 
 
     <!-- Medication Dropdown -->
     <div class="dropdown">
@@ -244,10 +244,15 @@ if (isset($_SESSION['user']) && in_array($current_page, $restricted_pages)) {
       </div>
     </div>
 
-    <a href="contact.php">Contact</a>
+    <a href="photography.php">Photography</a>
+    
 
-    <?php if (isset($_SESSION['user'])): ?>
-      <a href="dashboard.php">Dashboard</a>
+     <?php if (isset($_SESSION['user'])): ?>
+         <a href="vet.php">Vet</a>
+    <a href="mypets.php">My Pets</a>
+    <a href="blog.php">Blogs</a>
+    
+     <a href="contact.php">Contact</a>
     <?php else: ?>
       <a href="signup.php">Signup</a>
       <a href="login.php">Login</a>
