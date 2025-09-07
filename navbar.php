@@ -251,6 +251,7 @@ if (isset($_SESSION['user']) && in_array($current_page, $restricted_pages)) {
          <a href="vet.php">Vet</a>
     <a href="mypets.php">My Pets</a>
     <a href="blog.php">Blogs</a>
+    <a href="lost_found.php">lost & found</a>
     
      <a href="contact.php">Contact</a>
     <?php else: ?>
